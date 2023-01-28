@@ -1,5 +1,5 @@
 @startuml
-skinparam dpi 200
+skinparam dpi 110
 skinparam style strictuml
 autonumber
 
@@ -10,31 +10,22 @@ participant Frontend #ebaeba
 
 box "Backend" #eeeeee
  participant Controller #6db33f
-' participant Service #6db33f
+ participant Service #6db33f
 ' participant Repository #6db33f
-' participant DBMS
+ participant Repository #6db33f
+end box
+
+database PostgreSQL #aaccee
 
 User -> Frontend : Enter request text
-Frontend -> Controller : Send data in text format
-
-' Browser -> Frontend: Click link
-' Frontend -> Controller : POST /users
-
-' Controller -> Service : save user
-' Service -> Repository : repository.save()
-' Repository -> DBMS : saves user by exec SQL insert
-
-' DBMS --> Repository
-
-' Repository --> Service
-' Service --> Controller
-' Controller --> Frontend
-
-Controller --> Frontend : Send result/response in text
-
-Frontend -> Controller : request root page
-Controller --> Frontend : Send result/response in text
-
+Frontend -> Controller : Send data in JSON format
+Controller -> Service : get list
+Service -> Repository : get data from DB
+Repository --> PostgreSQL : SQL statements
+PostgreSQL --> Repository : articles data(records)
+Repository --> Service : list of objects
+Service --> Controller : list of objects
+Controller --> Frontend : Send result/response in JSON
 Frontend --> User: Show result
 
 @enduml
