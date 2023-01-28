@@ -1,0 +1,40 @@
+@startuml
+skinparam dpi 200
+skinparam style strictuml
+autonumber
+
+actor User #ebcebc
+
+participant Frontend #ebaeba
+'participant Backend #6db33f
+
+box "Backend" #eeeeee
+ participant Controller #6db33f
+' participant Service #6db33f
+' participant Repository #6db33f
+' participant DBMS
+
+User -> Frontend : Enter request text
+Frontend -> Controller : Send data in text format
+
+' Browser -> Frontend: Click link
+' Frontend -> Controller : POST /users
+
+' Controller -> Service : save user
+' Service -> Repository : repository.save()
+' Repository -> DBMS : saves user by exec SQL insert
+
+' DBMS --> Repository
+
+' Repository --> Service
+' Service --> Controller
+' Controller --> Frontend
+
+Controller --> Frontend : Send result/response in text
+
+Frontend -> Controller : request root page
+Controller --> Frontend : Send result/response in text
+
+Frontend --> User: Show result
+
+@enduml
