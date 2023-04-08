@@ -21,3 +21,9 @@ Spring Demo App description
 ```bash
     open http://localhost:8080/hello
 ```
+
+Swagger UI:
+
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
