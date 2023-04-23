@@ -22,6 +22,12 @@ Spring Demo App description
     open http://localhost:8080/hello
 ```
 
+Запуск тестов:
+
+```bash
+    gradle test
+```
+
 Swagger UI:
 
 ```bash

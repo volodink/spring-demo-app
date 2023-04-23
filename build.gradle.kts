@@ -2,6 +2,7 @@ plugins {
     java
     id("org.springframework.boot") version "3.0.2"
     id("io.spring.dependency-management") version "1.1.0"
+    id("com.adarshr.test-logger") version "3.2.0"
 }
 
 group = "edu.penzgtu"
@@ -38,6 +39,8 @@ dependencies {
 
     // Model mapper
     implementation("org.modelmapper:modelmapper:+")
+
+    testImplementation("org.assertj:assertj-core:3.20.2")
 }
 
 tasks.withType<Test> {
